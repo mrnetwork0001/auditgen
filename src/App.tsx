@@ -38,6 +38,7 @@ const App = () => (
       </RainbowKitProvider>
     </QueryClientProvider>
   </WagmiProvider>
+  </ThemeProvider>
 );
 
 export default App;
