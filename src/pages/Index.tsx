@@ -54,8 +54,9 @@ const Index = () => {
         resumeText,
         userWalletAddress: normalizedAddress,
       });
+      setTxHash(hash);
 
-      // 2. Wait for AI validators to reach consensus
+
       const receipt = await waitForReceipt(client, hash);
 
       // 3. Get the screening ID from the receipt
