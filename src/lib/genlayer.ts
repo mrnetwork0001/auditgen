@@ -1,17 +1,10 @@
-import { createClient } from "@genlayer/js-client";
+import { createClient } from "genlayer-js";
+import { studionet } from "genlayer-js/chains";
 import { CONTRACT_ADDRESS } from "@/config/wagmi";
 
 export function getGenLayerClient(account: `0x${string}`) {
   return createClient({
-    endpoint: "https://studio.genlayer.com/api",
-    chain: {
-      id: 61999,
-      name: "GenLayer StudioNet",
-      nativeCurrency: { name: "ETH", symbol: "ETH", decimals: 18 },
-      rpcUrls: {
-        default: { http: ["https://studio.genlayer.com/api"] },
-      },
-    } as any,
+    chain: studionet,
     account,
   });
 }
