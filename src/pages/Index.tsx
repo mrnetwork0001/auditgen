@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { useAccount, useSwitchChain } from "wagmi";
 import { getAddress } from "viem";
-import { Briefcase, FileSearch, Zap, Sparkles } from "lucide-react";
+import { Briefcase, FileSearch, Zap, Sparkles, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import ResumeInput from "@/components/ResumeInput";
