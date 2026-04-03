@@ -48,23 +48,36 @@ async function sleep(ms: number) {
 }
 
 export async function getScreening(client: any, screeningId: string) {
-  // Retry a few times in case state isn't immediately available after finalization
-  let lastError: any;
-  for (let i = 0; i < 5; i++) {
+  let result: any = null;
+  let retries = 3;
+
+  while (retries > 0 && !result) {
     try {
-      const result = await client.readContract({
+      await sleep(1000);
+
+      result = await client.readContract({
         address: CONTRACT_ADDRESS,
         functionName: "get_screening",
         args: [screeningId],
       });
-      return normalizeResult(result);
-    } catch (e) {
-      lastError = e;
-      console.warn(`get_screening attempt ${i + 1} failed, retrying...`, e);
-      await sleep(3000);
+
+      if (result) {
+        return normalizeResult(result);
+      }
+    } catch (e: any) {
+      const message = typeof e?.message === "string" ? e.message.toLowerCase() : "";
+      retries -= 1;
+
+      if (!message.includes("execution failed") || retries === 0) {
+        throw e;
+      }
+
+      console.warn(`get_screening retry ${3 - retries}: state not yet ready, retrying...`, e);
+      await sleep(2000);
     }
   }
-  throw lastError;
+
+  throw new Error("Failed to fetch screening results after multiple retries.");
 }
 
 function normalizeResult(raw: any) {
