@@ -155,7 +155,24 @@ const Index = () => {
         </div>
 
         {/* Loading / Results */}
-        {loading && <ConsensusLoader />}
+        {loading && (
+          <div className="space-y-4">
+            <ConsensusLoader />
+            {txHash && (
+              <div className="text-center">
+                <a
+                  href={`https://genlayer-explorer.vercel.app/tx/${txHash}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm text-primary hover:underline"
+                >
+                  <ExternalLink className="w-3.5 h-3.5" />
+                  Track on GenLayer Explorer
+                </a>
+              </div>
+            )}
+          </div>
+        )}
         {results && !loading && <AuditResults data={results} />}
       </main>
 
