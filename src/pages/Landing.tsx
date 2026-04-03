@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import HeroAuditAnimation from "@/components/HeroAuditAnimation";
 import {
-  Sparkles,
   BrainCircuit,
   ShieldCheck,
   Scale,
@@ -11,11 +10,12 @@ import {
   Award,
   ArrowRight,
   ExternalLink,
-  Zap,
   ChevronRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
+import LanguageMarquee from "@/components/LanguageMarquee";
+import RoadmapBento from "@/components/RoadmapBento";
 
 const Landing = () => {
   const navigate = useNavigate();
