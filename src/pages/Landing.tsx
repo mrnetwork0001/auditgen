@@ -32,29 +32,39 @@ const Landing = () => {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-24 md:pt-44 md:pb-36">
-        <div className="container mx-auto px-4 text-center max-w-4xl relative z-10">
-          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.1] mb-6 font-serif">
-            <span className="gradient-text glow-text">Decentralized AI</span>
-            <br />
-            <span className="text-foreground">Hiring Consensus</span>
-          </h1>
+      <section className="relative pt-28 pb-20 md:pt-40 md:pb-32">
+        <div className="container mx-auto px-4 relative z-10 max-w-7xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-8 items-center">
+            {/* Left Column – Text & CTA */}
+            <div className="md:pl-8 lg:pl-16 text-center md:text-left">
+              <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] mb-6 font-serif">
+                <span className="gradient-text glow-text">Decentralized AI</span>
+                <br />
+                <span className="text-foreground">Hiring Consensus</span>
+              </h1>
 
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
-            Verify talent with the power of on-chain AI. No human bias, just
-            immutable consensus on the GenLayer blockchain.
-          </p>
+              <p className="text-lg md:text-xl text-muted-foreground max-w-lg mb-10 leading-relaxed mx-auto md:mx-0">
+                Verify talent with the power of on-chain AI. No human bias, just
+                immutable consensus on the GenLayer blockchain.
+              </p>
 
-          <div className="flex items-center justify-center">
-            <Button
-              size="lg"
-              onClick={() => navigate("/audit")}
-              className="gradient-primary text-primary-foreground font-semibold px-10 py-6 text-lg hover:opacity-90 transition-all glow-border group"
-            >
-              <Sparkles className="w-5 h-5 mr-2 group-hover:animate-pulse" />
-              Audit Your CV
-              <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
-            </Button>
+              <div className="flex items-center justify-center md:justify-start">
+                <Button
+                  size="lg"
+                  onClick={() => navigate("/audit")}
+                  className="gradient-primary text-primary-foreground font-semibold px-10 py-6 text-lg hover:opacity-90 transition-all glow-border group"
+                >
+                  <Sparkles className="w-5 h-5 mr-2 group-hover:animate-pulse" />
+                  Audit Your CV
+                  <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
+                </Button>
+              </div>
+            </div>
+
+            {/* Right Column – Audit Animation */}
+            <div className="h-[400px] md:h-[520px]">
+              <HeroAuditAnimation />
+            </div>
           </div>
         </div>
 
