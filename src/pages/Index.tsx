@@ -161,7 +161,7 @@ const Index = () => {
             {txHash && (
               <div className="text-center">
                 <a
-                  href={`https://explorer-studio.genlayer.com/tx/${txHash}`}
+                  href={`https://explorer-studio.genlayer.com/address/${txHash}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 text-sm text-primary hover:underline"
