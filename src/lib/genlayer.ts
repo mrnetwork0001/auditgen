@@ -19,7 +19,7 @@ export async function submitScreening(
     userWalletAddress: string;
   }
 ) {
-  const tx = await client.writeContract({
+  const hash = await client.writeContract({
     address: CONTRACT_ADDRESS,
     functionName: "submit_screening",
     args: [
@@ -30,14 +30,19 @@ export async function submitScreening(
       args.userWalletAddress,
     ],
   });
-  return tx;
+  return hash;
 }
 
-export async function getScreening(client: any, userAddress: string) {
+export async function waitForReceipt(client: any, hash: string) {
+  const receipt = await client.waitForTransactionReceipt({ hash });
+  return receipt;
+}
+
+export async function getScreening(client: any, screeningId: string) {
   const result = await client.readContract({
     address: CONTRACT_ADDRESS,
     functionName: "get_screening",
-    args: [userAddress],
+    args: [screeningId],
   });
   return result;
 }

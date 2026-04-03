@@ -8,7 +8,7 @@ import ResumeInput from "@/components/ResumeInput";
 import ConsensusLoader from "@/components/ConsensusLoader";
 import AuditResults from "@/components/AuditResults";
 import { genlayerStudioNet } from "@/config/wagmi";
-import { getGenLayerClient, submitScreening, getScreening } from "@/lib/genlayer";
+import { getGenLayerClient, submitScreening, waitForReceipt, getScreening } from "@/lib/genlayer";
 
 const Index = () => {
   const { address, isConnected, chainId } = useAccount();
