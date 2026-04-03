@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import HeroAuditAnimation from "@/components/HeroAuditAnimation";
+import TypewriterText from "@/components/TypewriterText";
 import {
   Sparkles,
   BrainCircuit,
