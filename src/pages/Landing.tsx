@@ -251,8 +251,7 @@ const Landing = () => {
       <footer className="border-t border-border/50 py-8">
         <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
           <div className="flex items-center gap-2">
-            <Zap className="w-3.5 h-3.5 text-primary" />
-            AuditGen — Powered by GenLayer Blockchain
+            AuditGen - Powered by GenLayer Blockchain
           </div>
           <div className="text-muted-foreground">
             Built by{" "}
