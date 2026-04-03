@@ -11,7 +11,7 @@ const ConsensusLoader = () => {
       </div>
       <div className="text-center space-y-2">
         <h3 className="text-lg font-semibold text-foreground">AI Validators Reaching Consensus...</h3>
-        <p className="text-sm text-muted-foreground">Your resume is being audited on-chain by decentralized AI nodes</p>
+        <p className="text-sm text-muted-foreground">Your resume is being audited onchain by decentralized AI nodes</p>
       </div>
       <div className="w-64 h-2 rounded-full bg-secondary overflow-hidden">
         <div className="h-full rounded-full gradient-primary animate-shimmer" style={{ width: "70%" }} />
