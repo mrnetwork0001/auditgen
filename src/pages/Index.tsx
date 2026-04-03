@@ -35,6 +35,7 @@ const Index = () => {
     setLoading(true);
     setError(null);
     setResults(null);
+    setTxHash(null);
 
     const timeout = setTimeout(() => {
       setLoading(false);
