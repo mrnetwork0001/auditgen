@@ -243,6 +243,17 @@ const Landing = () => {
             <Zap className="w-3.5 h-3.5 text-primary" />
             AuditGen — Powered by GenLayer Blockchain
           </div>
+          <div className="text-muted-foreground">
+            Built by{" "}
+            <a
+              href="https://x.com/encrypt_wizard"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary hover:underline font-semibold"
+            >
+              MrNetwork
+            </a>
+          </div>
           <a
             href="https://explorer-studio.genlayer.com"
             target="_blank"
