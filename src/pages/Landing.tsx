@@ -39,7 +39,14 @@ const Landing = () => {
             {/* Left Column – Text & CTA */}
             <div className="md:pl-8 lg:pl-16 text-center md:text-left">
               <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] mb-6 font-serif">
-                <span className="gradient-text glow-text">Decentralized AI</span>
+                <span className="gradient-text glow-text">Decentralized </span>
+                <TypewriterText
+                  texts={["AI", "Hiring", "Consensus"]}
+                  typingSpeed={120}
+                  deletingSpeed={80}
+                  pauseDuration={2000}
+                  className="gradient-text glow-text"
+                />
                 <br />
                 <span className="text-foreground">Hiring Consensus</span>
               </h1>
