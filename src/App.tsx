@@ -6,6 +6,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { wagmiConfig } from "@/config/wagmi";
+import { ThemeProvider } from "@/hooks/use-theme";
 import Landing from "./pages/Landing";
 import Audit from "./pages/Audit";
 import NotFound from "./pages/NotFound";
@@ -14,6 +15,7 @@ import "@rainbow-me/rainbowkit/styles.css";
 const queryClient = new QueryClient();
 
 const App = () => (
+  <ThemeProvider>
   <WagmiProvider config={wagmiConfig}>
     <QueryClientProvider client={queryClient}>
       <RainbowKitProvider
@@ -36,6 +38,7 @@ const App = () => (
       </RainbowKitProvider>
     </QueryClientProvider>
   </WagmiProvider>
+  </ThemeProvider>
 );
 
 export default App;

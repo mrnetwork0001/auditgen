@@ -1,9 +1,12 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import { BrainCircuit } from "lucide-react";
+import { BrainCircuit, Moon, Sun } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
+import { useTheme } from "@/hooks/use-theme";
+import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
   const location = useLocation();
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/40 bg-background/70 backdrop-blur-xl">
@@ -24,6 +27,14 @@ const Navbar = () => {
               Launch Audit
             </Link>
           )}
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={toggleTheme}
+            className="text-muted-foreground hover:text-foreground"
+          >
+            {theme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+          </Button>
           <ConnectButton />
         </div>
       </div>
