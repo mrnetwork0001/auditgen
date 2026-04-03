@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { Upload, FileText } from "lucide-react";
 import { extractTextFromPDF } from "@/lib/pdf-extract";
 
@@ -11,6 +11,10 @@ const ResumeInput = ({ resumeText, onResumeTextChange }: ResumeInputProps) => {
   const [fileName, setFileName] = useState<string | null>(null);
   const [extracting, setExtracting] = useState(false);
   const [dragOver, setDragOver] = useState(false);
+
+  useEffect(() => {
+    if (!resumeText) setFileName(null);
+  }, [resumeText]);
 
   const handleFile = useCallback(async (file: File) => {
     if (file.type !== "application/pdf") return;
