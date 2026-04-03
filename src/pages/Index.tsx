@@ -35,11 +35,17 @@ const Index = () => {
     setError(null);
     setResults(null);
 
+    const timeout = setTimeout(() => {
+      setLoading(false);
+      setError("Consensus timed out after 2 minutes. Check the GenLayer Explorer for your transaction status.");
+    }, 120_000);
+
     try {
       const normalizedAddress = getAddress(address);
       const client = getGenLayerClient(normalizedAddress);
 
-      await submitScreening(client, {
+      // 1. Submit the screening transaction
+      const hash = await submitScreening(client, {
         jobTitle,
         jobDescription,
         mustHaveSkills,
@@ -47,26 +53,20 @@ const Index = () => {
         userWalletAddress: normalizedAddress,
       });
 
-      // Poll for results
-      let attempts = 0;
-      const poll = async (): Promise<any> => {
-        attempts++;
-        try {
-          const res = await getScreening(client, normalizedAddress);
-          if (res) return res;
-        } catch {}
-        if (attempts < 30) {
-          await new Promise((r) => setTimeout(r, 3000));
-          return poll();
-        }
-        throw new Error("Timeout waiting for consensus");
-      };
+      // 2. Wait for AI validators to reach consensus
+      const receipt = await waitForReceipt(client, hash);
 
-      const result = await poll();
+      // 3. Get the screening ID from the receipt
+      const screeningId = receipt.value;
+
+      // 4. Fetch the final AI result
+      const result = await getScreening(client, screeningId);
+
       setResults(result);
     } catch (e: any) {
       setError(e?.message || "Transaction failed");
     } finally {
+      clearTimeout(timeout);
       setLoading(false);
     }
   }, [address, jobTitle, jobDescription, mustHaveSkills, resumeText]);
