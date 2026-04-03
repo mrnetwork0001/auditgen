@@ -19,6 +19,7 @@ const Index = () => {
   const [mustHaveSkills, setMustHaveSkills] = useState("");
   const [resumeText, setResumeText] = useState("");
   const [loading, setLoading] = useState(false);
+  const [txHash, setTxHash] = useState<string | null>(null);
   const [results, setResults] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
 
