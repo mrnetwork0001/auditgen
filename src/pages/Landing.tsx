@@ -44,7 +44,7 @@ const Landing = () => {
               </h1>
 
               <p className="text-lg md:text-xl text-muted-foreground max-w-lg mb-10 leading-relaxed mx-auto md:mx-0">
-                Verify talent with the power of on-chain AI. No human bias, just
+                Verify talent with the power of onchain AI. No human bias, just
                 immutable consensus on the GenLayer blockchain.
               </p>
 
@@ -97,7 +97,7 @@ const Landing = () => {
                 icon: ShieldCheck,
                 title: "Immutable Proof",
                 description:
-                  "Every audit is permanently recorded on-chain, creating a transparent record of candidate fit.",
+                  "Every audit is permanently recorded onchain, creating a transparent record of candidate fit.",
                 accent: "accent",
               },
               {
@@ -159,7 +159,7 @@ const Landing = () => {
                 icon: Network,
                 title: "Consensus",
                 description:
-                  "Agreement is reached on-chain via the GenLayer StudioNet.",
+                  "Agreement is reached onchain via the GenLayer StudioNet.",
               },
               {
                 step: "04",

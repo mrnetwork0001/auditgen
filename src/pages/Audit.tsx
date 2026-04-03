@@ -79,7 +79,7 @@ const Audit = () => {
             AI-Powered Resume Screening
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-sm">
-            Submit your resume for a decentralized AI audit on GenLayer. Get transparent, consensus-driven hiring insights recorded on-chain.
+            Submit your resume for a decentralized AI audit on GenLayer. Get transparent, consensus-driven hiring insights recorded onchain.
           </p>
         </div>
 
