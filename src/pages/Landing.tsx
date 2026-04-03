@@ -213,15 +213,6 @@ const Landing = () => {
               </span>
               .
             </p>
-            <a
-              href="https://explorer-studio.genlayer.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm text-primary font-semibold hover:underline"
-            >
-              Explore the network
-              <ExternalLink className="w-3.5 h-3.5" />
-            </a>
           </div>
         </div>
       </section>
