@@ -1,8 +1,9 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import { BrainCircuit, Moon, Sun } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useTheme } from "@/hooks/use-theme";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/logo.png";
 
 const Navbar = () => {
   const location = useLocation();
