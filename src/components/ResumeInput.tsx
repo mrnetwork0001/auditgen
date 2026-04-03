@@ -5,6 +5,7 @@ import { extractTextFromPDF } from "@/lib/pdf-extract";
 interface ResumeInputProps {
   resumeText: string;
   onResumeTextChange: (text: string) => void;
+  onReset?: () => void;
 }
 
 const ResumeInput = ({ resumeText, onResumeTextChange }: ResumeInputProps) => {
