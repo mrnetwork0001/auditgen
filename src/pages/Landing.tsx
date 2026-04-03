@@ -33,11 +33,6 @@ const Landing = () => {
       {/* Hero Section */}
       <section className="relative pt-32 pb-24 md:pt-44 md:pb-36">
         <div className="container mx-auto px-4 text-center max-w-4xl relative z-10">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-border/60 bg-secondary/40 text-xs text-muted-foreground mb-8 backdrop-blur-sm">
-            <Zap className="w-3.5 h-3.5 text-primary" />
-            Built on GenLayer Blockchain
-          </div>
-
           <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.1] mb-6 font-serif">
             <span className="gradient-text glow-text">Decentralized AI</span>
             <br />
@@ -49,7 +44,7 @@ const Landing = () => {
             immutable consensus on the GenLayer blockchain.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex items-center justify-center">
             <Button
               size="lg"
               onClick={() => navigate("/audit")}
@@ -59,20 +54,6 @@ const Landing = () => {
               Audit Your CV
               <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
             </Button>
-            <a
-              href="https://explorer-studio.genlayer.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button
-                variant="outline"
-                size="lg"
-                className="px-8 py-6 text-base border-border/60"
-              >
-                <ExternalLink className="w-4 h-4 mr-2" />
-                View Explorer
-              </Button>
-            </a>
           </div>
         </div>
 
