@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import HeroAuditAnimation from "@/components/HeroAuditAnimation";
 import {
-  Sparkles,
   BrainCircuit,
   ShieldCheck,
   Scale,
@@ -11,11 +10,12 @@ import {
   Award,
   ArrowRight,
   ExternalLink,
-  Zap,
   ChevronRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
+import LanguageMarquee from "@/components/LanguageMarquee";
+import RoadmapBento from "@/components/RoadmapBento";
 
 const Landing = () => {
   const navigate = useNavigate();
@@ -71,6 +71,9 @@ const Landing = () => {
         {/* Decorative grid */}
         <div className="absolute inset-0 bg-[linear-gradient(hsl(var(--border)/0.03)_1px,transparent_1px),linear-gradient(90deg,hsl(var(--border)/0.03)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
       </section>
+
+      {/* Language Marquee */}
+      <LanguageMarquee />
 
       {/* Why AuditGen Section */}
       <section className="relative py-24 border-t border-border/30">
@@ -216,6 +219,9 @@ const Landing = () => {
           </div>
         </div>
       </section>
+
+      {/* Roadmap */}
+      <RoadmapBento />
 
       {/* Final CTA */}
       <section className="relative py-24 border-t border-border/30">
