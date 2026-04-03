@@ -55,10 +55,38 @@ async function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+function extractAuditId(value: string) {
+  const trimmed = value.trim();
+  if (!trimmed) {
+    return null;
+  }
+
+  const directMatch = trimmed.match(/AUDIT-[A-Za-z0-9_-]+/i);
+  if (directMatch) {
+    return directMatch[0];
+  }
+
+  const unquoted = trimmed.replace(/^['"]+|['"]+$/g, "");
+  const unquotedMatch = unquoted.match(/AUDIT-[A-Za-z0-9_-]+/i);
+  if (unquotedMatch) {
+    return unquotedMatch[0];
+  }
+
+  try {
+    const parsed = JSON.parse(trimmed);
+    if (typeof parsed === "string") {
+      return extractAuditId(parsed);
+    }
+  } catch {
+    return null;
+  }
+
+  return null;
+}
+
 function coerceScreeningId(value: unknown): string | null {
   if (typeof value === "string") {
-    const trimmed = value.trim();
-    return trimmed.length > 0 ? trimmed : null;
+    return extractAuditId(value);
   }
 
   if (Array.isArray(value)) {
@@ -73,7 +101,7 @@ function coerceScreeningId(value: unknown): string | null {
   if (value && typeof value === "object") {
     const obj = value as Record<string, unknown>;
 
-    for (const key of ["screening_id", "screeningId", "payload", "value"]) {
+    for (const key of ["screening_id", "screeningId", "readable", "payload", "value", "result"]) {
       const candidate = coerceScreeningId(obj[key]);
       if (candidate) {
         return candidate;
@@ -94,10 +122,13 @@ export function getScreeningIdFromReceipt(receipt: any) {
   const candidates = [
     receipt?.screening_id,
     receipt?.screeningId,
+    receipt?.value,
+    receipt?.result,
+    receipt?.data?.result,
+    ...leaderReceipts.map((entry: any) => entry?.result),
     ...leaderReceipts.map((entry: any) => entry?.result?.payload),
-    receipt?.result?.payload,
-    receipt?.data?.result?.payload,
-    typeof receipt?.value === "string" ? receipt.value : null,
+    ...leaderReceipts.map((entry: any) => entry?.result?.payload?.readable),
+    receipt?.consensus_data,
   ];
 
   for (const candidate of candidates) {
@@ -153,7 +184,7 @@ function normalizeResult(raw: any) {
       seniority: raw.seniority_estimate ?? raw.seniority ?? "Unknown",
       matched_skills: raw.matched_skills ?? [],
       missing_skills: raw.missing_skills ?? [],
-      explanation: raw.explanation ?? raw.key_highlight ?? "",
+      explanation: raw.explanation ?? raw.key_achievement ?? raw.key_highlight ?? "",
     };
   }
   // If raw is a JSON string, parse it
