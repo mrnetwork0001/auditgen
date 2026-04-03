@@ -231,7 +231,7 @@ const Landing = () => {
             onClick={() => navigate("/audit")}
             className="gradient-primary text-primary-foreground font-semibold px-10 py-6 text-lg hover:opacity-90 transition-all glow-border group"
           >
-            <Sparkles className="w-5 h-5 mr-2" />
+            
             Launch Audit
             <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
           </Button>
