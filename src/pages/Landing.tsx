@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import HeroAuditAnimation from "@/components/HeroAuditAnimation";
-import TypewriterText from "@/components/TypewriterText";
 import {
   Sparkles,
   BrainCircuit,
@@ -39,14 +38,7 @@ const Landing = () => {
             {/* Left Column – Text & CTA */}
             <div className="md:pl-8 lg:pl-16 text-center md:text-left">
               <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] mb-6 font-serif">
-                <span className="gradient-text glow-text">Decentralized </span>
-                <TypewriterText
-                  texts={["AI", "Hiring", "Consensus"]}
-                  typingSpeed={120}
-                  deletingSpeed={80}
-                  pauseDuration={2000}
-                  className="gradient-text glow-text"
-                />
+                <span className="gradient-text glow-text">Decentralized AI</span>
                 <br />
                 <span className="text-foreground">Hiring Consensus</span>
               </h1>
