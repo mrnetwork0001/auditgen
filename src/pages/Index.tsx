@@ -8,7 +8,7 @@ import ResumeInput from "@/components/ResumeInput";
 import ConsensusLoader from "@/components/ConsensusLoader";
 import AuditResults from "@/components/AuditResults";
 import { genlayerStudioNet } from "@/config/wagmi";
-import { getGenLayerClient, submitScreening, waitForReceipt, getScreening } from "@/lib/genlayer";
+import { getGenLayerClient, submitScreening, waitForReceipt, getScreening, getScreeningIdFromReceipt } from "@/lib/genlayer";
 
 const Index = () => {
   const { address, isConnected, chainId } = useAccount();
@@ -46,7 +46,6 @@ const Index = () => {
       const normalizedAddress = getAddress(address);
       const client = getGenLayerClient(normalizedAddress);
 
-      // 1. Submit the screening transaction
       const hash = await submitScreening(client, {
         jobTitle,
         jobDescription,
@@ -56,13 +55,8 @@ const Index = () => {
       });
       setTxHash(hash);
 
-
       const receipt = await waitForReceipt(client, hash);
-
-      // 3. Get the screening ID from the receipt
-      const screeningId = receipt.value;
-
-      // 4. Fetch the final AI result
+      const screeningId = getScreeningIdFromReceipt(receipt);
       const result = await getScreening(client, screeningId);
 
       setResults(result);
