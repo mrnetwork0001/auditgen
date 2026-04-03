@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { useAccount, useSwitchChain } from "wagmi";
 import { getAddress } from "viem";
-import { Briefcase, FileSearch, Zap, Sparkles } from "lucide-react";
+import { Briefcase, FileSearch, Zap, Sparkles, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import ResumeInput from "@/components/ResumeInput";
@@ -19,6 +19,7 @@ const Index = () => {
   const [mustHaveSkills, setMustHaveSkills] = useState("");
   const [resumeText, setResumeText] = useState("");
   const [loading, setLoading] = useState(false);
+  const [txHash, setTxHash] = useState<string | null>(null);
   const [results, setResults] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -34,6 +35,7 @@ const Index = () => {
     setLoading(true);
     setError(null);
     setResults(null);
+    setTxHash(null);
 
     const timeout = setTimeout(() => {
       setLoading(false);
@@ -52,8 +54,9 @@ const Index = () => {
         resumeText,
         userWalletAddress: normalizedAddress,
       });
+      setTxHash(hash);
 
-      // 2. Wait for AI validators to reach consensus
+
       const receipt = await waitForReceipt(client, hash);
 
       // 3. Get the screening ID from the receipt
@@ -152,7 +155,24 @@ const Index = () => {
         </div>
 
         {/* Loading / Results */}
-        {loading && <ConsensusLoader />}
+        {loading && (
+          <div className="space-y-4">
+            <ConsensusLoader />
+            {txHash && (
+              <div className="text-center">
+                <a
+                  href={`https://genlayer-explorer.vercel.app/tx/${txHash}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm text-primary hover:underline"
+                >
+                  <ExternalLink className="w-3.5 h-3.5" />
+                  Track on GenLayer Explorer
+                </a>
+              </div>
+            )}
+          </div>
+        )}
         {results && !loading && <AuditResults data={results} />}
       </main>
 
