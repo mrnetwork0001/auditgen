@@ -167,7 +167,43 @@ const Index = () => {
             )}
           </div>
         )}
-        {results && !loading && <AuditResults data={results} />}
+        {results && !loading && (
+          <div className="space-y-6">
+            <AuditResults data={results} />
+            {txHash && (
+              <div className="text-center">
+                <a
+                  href={`https://explorer-studio.genlayer.com/transactions/${txHash}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm text-primary hover:underline"
+                >
+                  <ExternalLink className="w-3.5 h-3.5" />
+                  View on GenLayer Explorer
+                </a>
+              </div>
+            )}
+            <div className="flex justify-center">
+              <Button
+                variant="outline"
+                size="lg"
+                onClick={() => {
+                  setJobTitle("");
+                  setJobDescription("");
+                  setMustHaveSkills("");
+                  setResumeText("");
+                  setResults(null);
+                  setTxHash(null);
+                  setError(null);
+                }}
+                className="font-semibold"
+              >
+                <RotateCcw className="w-4 h-4 mr-2" />
+                New Review
+              </Button>
+            </div>
+          </div>
+        )}
       </main>
 
       {/* Footer */}
