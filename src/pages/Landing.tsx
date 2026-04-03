@@ -217,6 +217,9 @@ const Landing = () => {
         </div>
       </section>
 
+      {/* Roadmap */}
+      <RoadmapBento />
+
       {/* Final CTA */}
       <section className="relative py-24 border-t border-border/30">
         <div className="container mx-auto px-4 text-center max-w-3xl">
