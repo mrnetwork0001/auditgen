@@ -1,6 +1,8 @@
 # AuditGen: Decentralized AI Resume Auditing  
 ### *Powered by GenLayer & Multi-LLM Consensus*
 
+**Intelligent Contract:** 0x9CE0d2626753e4C7729C70feeB41eAaB8Ecc189b
+
 [**AuditGen**](https://auditgen-ai-liart.vercel.app/) is a next-generation hiring infrastructure that eliminates bias and restores trust in recruitment through the **GenLayer** Intelligent Contract network. 
 
 
