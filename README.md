@@ -90,4 +90,8 @@ Developed for the **GenLayer Bradbury Hackathon**.
 
 AuditGen demonstrates that **Decentralized AI** is the only way to solve the transparency crisis in global hiring. By moving the "Judgment" of talent from a private black-box server to a public, multi-validator protocol, we enable a truly meritocratic future for work.
 
+```
+
+Intelligent Contract: 0x9CE0d2626753e4C7729C70feeB41eAaB8Ecc189b
+
 **Contact:** [MrNetwork](https://x.com/encrypt_wizard) 
